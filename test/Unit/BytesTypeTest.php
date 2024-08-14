@@ -1,0 +1,75 @@
+<?php
+
+namespace Ethereum\Test\Unit;
+
+use InvalidArgumentException;
+use Ethereum\Test\TestCase;
+use Ethereum\Web3\Contracts\Types\Bytes;
+
+class BytesTypeTest extends TestCase
+{
+    /**
+     * testTypes
+     * 
+     * @var array
+     */
+    protected $testTypes = [
+        [
+            'value' => 'bytes',
+            'result' => false
+        ], [
+            'value' => 'bytes[]',
+            'result' => false
+        ], [
+            'value' => 'bytes[4]',
+            'result' => false
+        ], [
+            'value' => 'bytes[][]',
+            'result' => false
+        ], [
+            'value' => 'bytes[3][]',
+            'result' => false
+        ], [
+            'value' => 'bytes[][6][]',
+            'result' => false
+        ], [
+            'value' => 'bytes32',
+            'result' => true
+        ], [
+            'value' => 'bytes8[4]',
+            'result' => true
+        ],
+    ];
+
+    /**
+     * solidityType
+     * 
+     * @var \Ethereum\Web3\Contracts\SolidityType
+     */
+    protected $solidityType;
+
+    /**
+     * setUp
+     * 
+     * @return void
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->solidityType = new Bytes;
+    }
+
+    /**
+     * testIsType
+     * 
+     * @return void
+     */
+    public function testIsType()
+    {
+        $solidityType = $this->solidityType;
+
+        foreach ($this->testTypes as $type) {
+            $this->assertEquals($solidityType->isType($type['value']), $type['result']);
+        }
+    }
+}
