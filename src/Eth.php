@@ -93,7 +93,7 @@ class Eth
             }
             if (!array_key_exists($method, $this->methods)) {
                 // new the method
-                $methodClass = sprintf("\Web3\Methods\%s\%s", ucfirst($class[1]), ucfirst($name));
+                $methodClass = sprintf("\Web3\Methods\%s\%s", ucfirst($class[2]), ucfirst($name));
                 $methodObject = new $methodClass($method, $arguments);
                 $this->methods[$method] = $methodObject;
             } else {
