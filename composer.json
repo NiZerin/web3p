@@ -17,7 +17,7 @@
         "ext-mbstring": "*",
         "react/http": "^1.6.0",
         "react/async": "^4.0.0|^3.1.0",
-        "react/promise": "^2.9.0",
+        "react/promise": "^3.0 || ^2.0 || ^1.1",
         "react/event-loop": "^1.2",
         "react/socket": "^1.13",
         "ratchet/pawl": "^0.4.1",
